@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/style.css">  !-->
+    <title>Heart Failure Prediction</title>
+  </head>
+  
+  <body>
+    
+<div class="container main">
+  <div class="jumbotron" id="holder">
+     <br>
+       <center><b><h2 style="color:#FF0000";>{{ prediction_text}}</h2></b></center> 
+     <br>
+     <br>
+    <center><h1 class='main_heading'> Heart Failure Prediction Model</h1></center>
+    <br>
+    <div class="instructions">
+      <p>1. Please Enter values for the following fields</p>
+     
+    </div>
+
+    <form class="form-horizontal" action="{{ url_for('predict')}}"method="post">
+
+      <div class="form-group">
+        <div class="col-sm-10">
+          <input  class="form-control" type= "text" name="age" placeholder="Age" required="required" />
+        </div>
+      </div>
+	  <div class="form-group">
+        <div class="col-sm-10">		  
+        
+		<label for="fname">Gender:</label><br>
+		<input type="radio" id="gender" name="Gender" value="0">
+		<label for="0">Male</label><br>
+		<input type="radio" id="gender" name="Gender" value="1">
+		<label for="1">Female</label>
+        </div>
+      </div>
+	  
+     <div class="form-group">
+        <div class="col-sm-10">		  
+        
+		<b><label for="fname">Chest Pain:</label></b></br>
+		<input type="radio" id="chest_pain" name="chest_pain" value="0">
+		<label for="0">asymptomatic</label>
+		<input type="radio" id="chest_pain" name="chest_pain" value="1">
+		<label for="1">atypical angina</label>
+		<input type="radio" id="chest_pain" name="chest_pain" value="2">
+		<label for="2">non-anginal pain</label>
+		<input type="radio" id="chest_pain" name="chest_pain" value="3">
+		<label for="3">typical angina</label>
+        </div>
+      </div>
+
+      
+      <div class="form-group">
+        <div class="col-sm-10">
+          <input  class="form-control" type="text" name="restbps" placeholder="Restbps" required="required" />
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="col-sm-10">
+          
+		 <b><label for="rest_ecg">Rest ECG:</label></b></br>
+		<input type="radio" id="rest_ecg" name="rest_ecg" value="0">
+		<label for="0">Probable or definite left ventricular hypertrophy</label>
+		<input type="radio" id="rest_ecg" name="rest_ecg" value="1">
+		<label for="1">Normal</label>
+		<input type="radio" id="rest_ecg" name="rest_ecg" value="2">
+		<label for="2">Having ST-T wave abnormality</label>
+        </div>
+      </div>
+      
+	  <div class="form-group">
+        <div class="col-sm-10">
+          <input  class="form-control" type="text" name="thalach" placeholder="Thalach" required="required" />
+        </div>
+      </div>
+	  
+	  <div class="form-group">
+        <div class="col-sm-10">
+          
+		 <b><label for="rest_ecg">Exercise Angina:</label></b></br>
+		<input type="radio" id="exer_angina" name="exer_angina" value="0">
+		<label for="0">No</label>
+		<input type="radio" id="exer_angina" name="exer_angina" value="1">
+		<label for="1">Yes</label>
+		</div>
+      </div>
+	  
+	  <div class="form-group">
+        <div class="col-sm-10">
+          <input  class="form-control" type="text" name="old_peak" placeholder="Old Peak" required="required" />
+        </div>
+      </div>
+	  
+	  <div class="form-group">
+        <div class="col-sm-10">
+          
+		 <b><label for="rest_ecg">Slope:</label></b></br>
+		<input type="radio" id="slope" name="slope" value="0">
+		<label for="0">downsloping</label>
+		<input type="radio" id="exer_angina" name="exer_angina" value="1">
+		<label for="1">Flat</label>
+		<input type="radio" id="exer_angina" name="exer_angina" value="2">
+		<label for="2">Upsloping</label>
+		</div>
+      </div>
+	  
+	  <div class="form-group">
+        <div class="col-sm-10">
+          <input  class="form-control" type="text" name="ca" placeholder="CA" required="required" />
+        </div>
+      </div>
+	  
+	  <div class="form-group">
+        <div class="col-sm-10">
+          
+		 <b><label for="rest_ecg">Thalassemia:</label></b></br>
+		<input type="radio" id="thalassemia" name="thalassemia" value="0">
+		<label for="0">Fixed Defect </label>
+		<input type="radio" id="thalassemia" name="thalassemia" value="1">
+		<label for="1">Normal Blood Flow</label>
+		<input type="radio" id="thalassemia" name="thalassemia" value="2">
+		<label for="2">Reversible Defect</label>
+		</div>
+      </div>
+	  
+      
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+         <center><button type="submit" class="button btn btn-default">PREDICT</button><center/>
+        </div>
+      </div>
+    </form>
+
+    
+
+    <h2 class="result"></h2>
+  </div>
+  </div>
+
+  </body>
+</html>
